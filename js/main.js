@@ -1,4 +1,3 @@
-console.log("ready to go");
 
 /*----------constants--------*/
 const playerOne = "x" ;
@@ -17,7 +16,7 @@ let playerOneMvs, playerTwoMvs, totalMvs
 document.getElementById('board').addEventListener('click', handleBoxClick);
 
 // document.getElementById('reset').addEventListener('click' init);
-
+let box1 = document.getElementById('box1')
 
 
 /*--------event listeners-------*/
@@ -27,13 +26,18 @@ document.getElementById('board').addEventListener('click', handleBoxClick);
 
 
 /*----------functions-----------*/
-
+init();
 
 function handleBoxClick(evt){
-    evt.target.textContent = playerOne;
-    console.log(evt.target.textContent);
+    totalMvs ++;
+    if(totalMvs % 2 !== 0){
+        evt.target.textContent = playerOne;
+      } else {
+        evt.target.textContent = playerTwo;
+        console.log(totalMvs);
+    };
+};
+function init(){
+    totalMvs = 0 ;
 }
 
-function init(evt){
-
-};
