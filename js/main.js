@@ -2,9 +2,9 @@
 /*----------constants--------*/
 const playerOne = "x" ;
 const playerTwo = "o" ;
-let boxesClicked;
 
 /*---------app's state (variables)-------*/
+let boxesClicked;
 
 let playerOneMvs, playerTwoMvs;
 
@@ -62,7 +62,7 @@ function checkWinner(box, arr, score){
         }if(boxesClicked.length === 9) {
             window.setTimeout(window.alert, 350, "Tie Game.");
         }
-        console.log("win win" + playerOneTotalScore);
+        // console.log("win win" + playerOneTotalScore);
     };
 
 //initialize game 

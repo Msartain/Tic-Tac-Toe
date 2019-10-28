@@ -5,6 +5,7 @@
 
 body {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     background-color:#0F1C73
@@ -14,7 +15,7 @@ h1 {
     text-align: center;;
     font-size: 3em;
     color:#CA0146;
-    padding: 1em;
+    /* padding-top: .1em; */
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -36,20 +37,20 @@ table {
 
   }
   
-  td {
-    width: 33.333%;
-    border: 6px solid white;
-    font-size: 50px;
-    text-align: center;
-    /* justify-content: space-around; */
-    align-items: center;
-    /* border-radius: 40%; */
+div {
+  /* margin: 0 auto; */
+  /* height: 50px; */
+  /* width: 50px; */
+  /* border-radius: 100%; */
 }
 
-td::after {
-    content: "";
-    display: block;
-    margin-top: 75%;
+  td {
+    width: 300px;
+    height: 100px;
+    border: 6px solid white;
+    font-size: 100px;
+    text-align: center;
+    /* justify-content: space-around; */
+    /* align-items: center; */
     /* border-radius: 40%; */
-  }
-
+}
