@@ -32,10 +32,10 @@ function handleBoxClick(evt){
     if(preventDoubleClick(box, evt)) return;
     if(boxesClicked.length % 2 !== 0){
         evt.target.textContent = playerOne;
-        checkWinner(box, playerOneMvs, playerOneTotalScore);
+        checkWinner(box, playerOneMvs, playerOne);
     } else {
         evt.target.textContent = playerTwo;
-        checkWinner(box, playerTwoMvs, playerTwoTotalScore);
+        checkWinner(box, playerTwoMvs, playerTwo);
     }
 };
 
@@ -43,7 +43,6 @@ function handleBoxClick(evt){
 function preventDoubleClick(click, evt){
         if (evt.target.textContent){
             return true;
-
         } else {
             boxesClicked.push(click);
             return false;
@@ -51,20 +50,23 @@ function preventDoubleClick(click, evt){
 };    
 
 //checking for a winning combination of box numbers
-console.log(playerOneTotalScore)
-function checkWinner(box, arr, score){
-        arr.push(box);
-       if ((arr.includes("1") && arr.includes("2") && arr.includes("3")) ||
-           (arr.includes("4") && arr.includes("5") && arr.includes("6")) ||
-           (arr.includes("7") && arr.includes("8") && arr.includes("9")) ||
-           (arr.includes("1") && arr.includes("5") && arr.includes("9")) ||
-           (arr.includes("3") && arr.includes("5") && arr.includes("7")) ||
-           (arr.includes("1") && arr.includes("4") && arr.includes("7")) ||
-           (arr.includes("2") && arr.includes("5") && arr.includes("8")) ||
-           (arr.includes("3") && arr.includes("6") && arr.includes("9"))){
-            score ++;
-            message.innerHTML = '<h2>Winner!</h2>';
-            // preventDoubleClick(box, evt);
+// console.log(playerOneTotalScore)
+function checkWinner(box, playerArr, player){
+        playerArr.push(box);
+       if ((playerArr.includes("1") && playerArr.includes("2") && playerArr.includes("3")) ||
+           (playerArr.includes("4") && playerArr.includes("5") && playerArr.includes("6")) ||
+           (playerArr.includes("7") && playerArr.includes("8") && playerArr.includes("9")) ||
+           (playerArr.includes("1") && playerArr.includes("5") && playerArr.includes("9")) ||
+           (playerArr.includes("3") && playerArr.includes("5") && playerArr.includes("7")) ||
+           (playerArr.includes("1") && playerArr.includes("4") && playerArr.includes("7")) ||
+           (playerArr.includes("2") && playerArr.includes("5") && playerArr.includes("8")) ||
+           (playerArr.includes("3") && playerArr.includes("6") && playerArr.includes("9"))){
+            if(player === 'x'){
+                playerOneTotalScore ++;
+            } else{
+                playerTwoTotalScore ++;
+            }
+            message.innerHTML = `<h2>Winner is ${player}!</h2>`;
             document.getElementById('board').style.pointerEvents = 'none';
             // window.setTimeout(window.alert, 350, "Win!");
         }else if(boxesClicked.length === 9) {

@@ -1,7 +1,9 @@
 
-* {
-    box-sizing: border-box;
-  }
+  
+*, *::after, *::before {
+  box-sizing: border-box;
+
+}
 
 body {
     display: flex;
@@ -31,24 +33,23 @@ h1 {
 }
 
 table {
-    width: 35%;
+
+    width: 50%;
+    height: 50%;
     border-collapse: collapse;
     /* border-radius: 40%; */
+    
   }
   
-div {
-  /* margin: 0 auto; */
-  /* height: 50px; */
-  /* width: 50px; */
-  /* border-radius: 100%; */
-}
 
   td {
-    width: 300px;
+    width: 100px;
     height: 100px;
     border: 6px solid white;
-    font-size: 100px;
+    font-size: 70px;
     text-align: center; 
     color: white;  
     vertical-align: top;
+    /* box-sizing: border-box; */
+    padding: 5px;
 }
