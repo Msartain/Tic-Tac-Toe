@@ -4,7 +4,7 @@ const playerOne = "x" ;
 const playerTwo = "o" ;
 
 /*---------app's state (variables)-------*/
-let boxesClicked;
+let boxesClicked = [];
 
 let playerOneMvs, playerTwoMvs;
 
@@ -29,28 +29,30 @@ init();
 //alternating turns between X and O 
 function handleBoxClick(evt){
     let box = evt.target.id;
-    preventDoubleClick(box, evt);
+    if(preventDoubleClick(box, evt)) return;
     if(boxesClicked.length % 2 !== 0){
         evt.target.textContent = playerOne;
-        checkWinner(box, playerOneMvs, playerOneTotalScore, evt);
+        checkWinner(box, playerOneMvs, playerOneTotalScore);
     } else {
         evt.target.textContent = playerTwo;
-        checkWinner(box, playerTwoMvs, playerTwoTotalScore, evt);
+        checkWinner(box, playerTwoMvs, playerTwoTotalScore);
     }
 };
 
 //preventing a second click
 function preventDoubleClick(click, evt){
-        if (boxesClicked.includes(click)){
-            evt.preventDefault();
+        if (evt.target.textContent){
+            return true;
+
         } else {
             boxesClicked.push(click);
+            return false;
         }
 };    
 
 //checking for a winning combination of box numbers
 console.log(playerOneTotalScore)
-function checkWinner(box, arr, score,evt){
+function checkWinner(box, arr, score){
         arr.push(box);
        if ((arr.includes("1") && arr.includes("2") && arr.includes("3")) ||
            (arr.includes("4") && arr.includes("5") && arr.includes("6")) ||
@@ -60,11 +62,13 @@ function checkWinner(box, arr, score,evt){
            (arr.includes("1") && arr.includes("4") && arr.includes("7")) ||
            (arr.includes("2") && arr.includes("5") && arr.includes("8")) ||
            (arr.includes("3") && arr.includes("6") && arr.includes("9"))){
-            score++;
+            score ++;
             message.innerHTML = '<h2>Winner!</h2>';
-            evt.preventDefault();
+            // preventDoubleClick(box, evt);
+            document.getElementById('board').style.pointerEvents = 'none';
             // window.setTimeout(window.alert, 350, "Win!");
         }else if(boxesClicked.length === 9) {
+            document.getElementById('board').style.pointerEvents = 'none';
             message.innerHTML = '<h2>Tie Game!</h2>';
             // window.setTimeout(window.alert, 350, "Tie Game.");
         }
@@ -77,6 +81,7 @@ function init(){
     boxesClicked = [];
     playerOneMvs = [];
     playerTwoMvs = [];
+    document.getElementById('board').style.pointerEvents = '';
     for(let i = 1; i <= 9; i++){
         document.getElementById(i.toString()).textContent = '';
     };
